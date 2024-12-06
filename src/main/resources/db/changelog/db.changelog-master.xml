@@ -6,4 +6,5 @@
 
     <include file="db/changelog/versions/create_customer_table.sql" />
     <include file="db/changelog/versions/create_phone_number_table.sql" />
+    <include file="db/changelog/versions/delete_phone_index.sql" />
 </databaseChangeLog>
