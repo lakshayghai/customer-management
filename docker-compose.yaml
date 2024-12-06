@@ -1,0 +1,29 @@
+version: '3'
+services:
+  application:
+    image: 'customer-management:0.0.1'
+    depends_on:
+      - postgres
+    environment:
+      - 'SPRING_PROFILES_ACTIVE=dev'
+      - 'DATABASE_URL=jdbc:postgresql://postgres:5432/customerdb'
+      - 'DATABASE_USERNAME=myuser'
+      - 'DATABASE_PASSWORD=secret'
+    ports:
+      - '8080:8080'
+    networks:
+      - 'customer-management-default'
+
+  postgres:
+    image: 'postgres:17.2'
+    environment:
+      - 'POSTGRES_DB=customerdb'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_USER=myuser'
+    ports:
+      - '5432:5432'
+    networks:
+      - 'customer-management-default'
+
+networks:
+  customer-management-default:
